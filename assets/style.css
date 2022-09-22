@@ -1,0 +1,16 @@
+#pageTitle {
+    color: blue;
+}
+
+.blue {
+    color: blue;
+}
+
+.bigBlue {
+    color: blue;
+    font-size: 100px;
+}
+
+.noshow {
+    display: none;
+}
