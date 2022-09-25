@@ -66,6 +66,9 @@ h3{
     flex-direction: column;
 }
 .questionText{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 200px;
     font-size: 5rem;
     font-weight: bolder;
     padding-top: 2rem, 0rem, 2rem, 0rem;

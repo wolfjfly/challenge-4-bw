@@ -5,9 +5,11 @@ var questionEl=document.querySelector("#question");
 var qConEl=document.querySelector("#questionContainer");
 var scoreEl=document.querySelector(".score")
 var endGameEl=document.querySelector("#allDone");
+var initialsInputEl=document.querySelector("#initials")
 var hiScrbtnEl=document.querySelector(".highscore");
 var hiScrEl=document.querySelector("#hiScCon")
 var HighScoreList=document.querySelector("#scoreHist")
+var submitEl=document.querySelector("#submit");
 var startEl=document.querySelector("#start");
 var btnEl=document.querySelector("#btn");
 var b1El=document.querySelector("#b1");
@@ -44,7 +46,7 @@ var quizzQuestions= [
     answer: "3. alerts",
   },
   {
-    question: "Arrays in JavaScript can be used to store ____.",
+    question:"Arrays in JavaScript can be used to store ____.",
     b1: "1. numbers and strings",
     b2: "2. other arrays",
     b3: "3. booleans",
@@ -97,14 +99,15 @@ function startTimer() {
       clearInterval(timer);
       endGame();
     }
-  }, 10000);
+  }, 1000);
 }
 
 function endGame(){
   qConEl.setAttribute("class","noshow");
   endGameEl.removeAttribute("class","noshow");
   scoreEl.textContent=score;
-  localStorage.setItem("timeScore",timer)
+  localStorage.setItem("timeScore",timer);
+  localStorage.setItem("Initials", initialsInputEl);
 }
 
 function hiScr(){
@@ -131,8 +134,8 @@ function setQuestion(){
     b4El.textContent=(quizzQuestions[i].b4),
     globalAnswer=(quizzQuestions[i].answer)
     qNum++
-    ;
-  }return
+    return;
+  }
 }
 
   function log1(){console.log(b1El.textContent);
@@ -146,13 +149,19 @@ function setQuestion(){
 
 function checkAnswer(){
   if(globalAnswer===userGuess){
-    console.log("yes")
     console.log("UserGuess Yes",userGuess)
+    correct+1
   }else{
-    console.log("no")
     console.log("UserGuess NO",userGuess)
+    wrong+1
   }
-  // setQuestion()
+  setQuestion()
+}
+
+function mainPage(){
+  endGameEl.setAttribute("class", "noshow");
+  titleEl.removeAttribute("class","noshow");
+  initialsInputEl=("");
 }
 
 function startGame(event){
@@ -160,7 +169,7 @@ function startGame(event){
   qNum=0;
   correct=0;
   wrong=0;
-  timeCount=30;
+  timeCount=700;
   titleEl.setAttribute("class","noshow");
   qConEl.removeAttribute("class","noshow");
   startTimer();
@@ -177,6 +186,8 @@ function startGame(event){
   console.log(userGuess);
   console.log(correct);
   console.log(wrong);
+  console.log(correct);
+  console.log(wrong);
 }
 
 // **** Initiators ****
@@ -187,4 +198,6 @@ function startGame(event){
   b2El.addEventListener("click",log2);
   b3El.addEventListener("click",log3);
   b4El.addEventListener("click",log4);
-  btnEl.addEventListener("click",checkAnswer)
+  btnEl.addEventListener("click",checkAnswer);
+  submitEl.addEventListener("click",mainPage);
+
