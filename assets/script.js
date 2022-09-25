@@ -107,9 +107,6 @@ function startTimer() {
 function endGame(){
   qConEl.setAttribute("class","noshow");
   endGameEl.removeAttribute("class","noshow");
-  // console.log("1",initialsInputEl.value);
-  // initialsInputEl.value=("");
-  // console.log("2",initialsInputEl.value);
   scoreEl.textContent=timeCount;
   
 }
@@ -121,13 +118,6 @@ function sub(event){
 
   initials.push(initialsInputEl.value);
   localStorage.setItem("Initials", JSON.stringify(initials));
-  // i=initials.length
-  // s=scoreCard.length
-  
-  
-  // console.log(initials);
-  // console.log(initialsInputEl.value);
-  // console.log(initialsInputEl.value);
   hiScr();
 }
 
@@ -180,6 +170,7 @@ function checkAnswer(){
     console.log("Wrong",wrong);
   }else{
     wrong++;
+    timeCount-10;
     console.log("UserGuess NO",userGuess);
     console.log("Question number", qNum);
     console.log("Correct",correct);
@@ -203,7 +194,7 @@ function startGame(event){
   qNum=0;
   correct=0;
   wrong=0;
-  timeCount=700;
+  timeCount=50;
   titleEl.setAttribute("class","noshow");
   qConEl.removeAttribute("class","noshow");
   startTimer();
@@ -213,12 +204,6 @@ function startGame(event){
   console.log(correct);
   console.log(wrong);
   console.log()
-  // console.log("Number of questions",quizzQuestions.length);
-  // console.log(questionEl);
-  // console.log(b1El);
-  // console.log(b2El);
-  // console.log(b3El);
-  // console.log(b4El);
 }
 
 function clear(){
