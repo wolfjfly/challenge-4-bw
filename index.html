@@ -11,32 +11,67 @@
 
 <body>
     <header>
-        <h1 class="blue">View Highscores</h1>
-        <h2 class="time bigBlue"> time</h2>
-        
-
+        <button class="highscore">View Highscores</button>
+        <h2 class="time"></h2>
     </header>
 
-    <main>
-        <div>
+    <main>  
+        <!-- **** Onload Page **** -->
+        <section id="pageTitle">
             <h3 id="pageTitle">Coding Quiz Challenge</h3>
-            <p id="question">Try to answer the followingcode-related questions within the time<br>limit. Keep in mind that incorrect answers will penalize your scouretime <br> by ten senconds!</p>
+            <p class="mainText">Try to answer the followingcode-related questions within the time<br>limit. Keep in mind that incorrect answers will penalize your scouretime <br> by ten senconds!</p>
             <button id="start">Start Quiz</button>
-        </div>
-        <div class="noshow">
-            <button id="b1"></button>
-            <button id="b2"></button>
-            <button id="b3"></button>
-            <button id="b4"></button>
-            <p id="feedBack"></p>
-        </div>
+        </section>
+        <!-- **** Questions and answer buttons **** -->
+        <section id="questionContainer" class="noshow">
+            <div id="btn">
+                <p id="question" class="questionText"></p>
+                <div class="btnGroup">
+                    <button id="b1" class="ansBtn"></button>
+                    <button id="b2" class="ansBtn"></button>
+                    <button id="b3" class="ansBtn"></button>
+                    <button id="b4" class="ansBtn"></button>
+                </div>
+            </div>
+        </section>
+        <!-- **** Feed back bar **** -->
+        <section>
+            <div>
+                <p id="feedBack"></p>
+            </div>
+        </section>
+        <!-- **** After the game window **** -->
+        <section id="allDone" class="noshow">
+            <div class="aDcon">
+                <h4>All Done!</h4>
+                <p class="aD"><strong>Your final score is</strong> <span class="score"></span></p>
+                <div class="input">
+                    <label id="initials" for="initials">Enter initials  </label>
+                    <input id="initials" type="text" size="6">
+                    <button id="submit">submit</button>
+                </div>
+            </div>
+        </section>
+        <!-- **** High Score Window **** -->
+        <section id="hiScCon" class="noshow">
+            <div class="hiScLayout">
+                <h5>High scores</h5>
+                <ul id="scoreHist"></ul>
+                <div class="hiScBtn">
+                    <button id="gBbtn">Go Back</button>
+                    <button id="cHsbtn">Clear high score</button>
+                </div>
+            </div>
+
+        </section>
         
     </main>
 
-    <footer>
+    <!-- <footer>
         <h4>coded with love💘</h4>
 
-    </footer>
+    </footer> -->
+    
     <script src="./assets/script.js"></script>
 
 </body>

@@ -1,16 +1,181 @@
-#pageTitle {
-    color: blue;
+html{
+    font-size: 62.5%;
 }
-
-.blue {
-    color: blue;
+Header{
+    display: flex;
+    flex-wrap: wrap;
+    width: 96%;
+    flex-direction: row;
+    justify-content: space-between;
 }
-
-.bigBlue {
-    color: blue;
-    font-size: 100px;
+main{
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    flex-wrap: wrap;
 }
-
+footer{
+    text-align: center;
+}
+.highscore{
+    color: darkmagenta;
+    border: none;
+    font-size: 4rem;
+    background-color: transparent;
+}
+.highscore:hover{
+    opacity: 1;
+    color: blueviolet;
+    cursor: pointer;
+}
+.time{
+    font-size: 4rem;
+}
+#pageTitle{
+    text-align: center;
+}
+h3{
+    font-size: 8rem;
+    margin: 50px;
+}
+.mainText{
+    font-size: 5rem;
+    padding-top: 2rem, 0rem, 2rem, 0rem;
+}
 .noshow {
     display: none;
+}
+.noshow2 {
+    display: none;
+}
+#start{
+    font-size: 4rem;
+    background-color: blue;
+    color: white;
+    border-radius: 15px;
+    padding: 6px;
+    transition-duration: .6s;
+}
+#start:hover{
+    color: black;
+    background-color: aqua;
+    cursor: pointer;
+}
+#btn{
+    display: flex;
+    flex-direction: column;
+}
+.questionText{
+    font-size: 5rem;
+    font-weight: bolder;
+    padding-top: 2rem, 0rem, 2rem, 0rem;
+}
+.btnGroup{
+    display: flex;
+    flex-direction: column;
+    width:fit-content;
+}
+.ansBtn{
+    font-size: 4rem;
+    transition-duration: .6s;
+    text-align: left;
+    border-radius: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+    background-color: blue;
+}
+.ansBtn:hover{
+    color: white;
+    background-color:blueviolet;
+    cursor: pointer;
+}
+h4{
+    font-size: 8rem;
+    margin: 2rem;
+    margin-left: 0rem;
+}
+.aD{
+    font-size: 5rem;
+    font-weight: bolder;
+    margin: 0rem 0rem 2rem 0rem;
+}
+#submit{
+    font-size: 5rem;
+    transition-duration: .6s;
+    text-align: left;
+    border-radius: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: white;
+    background-color: blue;
+}
+#submit:hover{
+    color: white;
+    background-color:blueviolet;
+    cursor: pointer;
+}
+#initials{
+    font-size: 5rem;
+    font-weight: bolder;
+    margin-right: 1.5rem;
+}
+.input{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.aDcon{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+h5{
+    font-size: 5rem;
+    margin: 1rem;
+    margin-left: 0rem;
+}
+.hiScBtn{
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 1rem 0rem 0rem;
+}
+#gBbtn{
+    font-size: 4rem;
+    transition-duration: .6s;
+    text-align: left;
+    border-radius: 1.5rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    color: white;
+    background-color: blue;
+}
+#gbBtn:hover{
+    color: white;
+    background-color:blueviolet;
+    cursor: pointer;
+}
+#cHsbtn{
+    font-size: 4rem;
+    transition-duration: .6s;
+    text-align: left;
+    border-radius: 1.5rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    color: white;
+    background-color: blue;
+}
+#cHsBtn:hover{
+    color: white;
+    background-color:blueviolet;
+    cursor: pointer;
+}
+#scoreHist{
+    font-size: 5rem;
+}
+.hiScLayout{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
 }
