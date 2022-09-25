@@ -3,12 +3,14 @@ var timeEl=document.querySelector(".time");
 var titleEl=document.querySelector("#pageTitle");
 var questionEl=document.querySelector("#question");
 var qConEl=document.querySelector("#questionContainer");
-var scoreEl=document.querySelector(".score")
+var scoreEl=document.querySelector(".score");
 var endGameEl=document.querySelector("#allDone");
-var initialsInputEl=document.querySelector("#initials")
+var initialsInputEl=document.querySelector("input[name=initials]");
 var hiScrbtnEl=document.querySelector(".highscore");
-var hiScrEl=document.querySelector("#hiScCon")
-var HighScoreList=document.querySelector("#scoreHist")
+var hiScrEl=document.querySelector("#hiScCon");
+var HighScoreList=document.querySelector("#scoreHist");
+var goBackEl=document.querySelector("#gBbtn");
+var clearEl=document.querySelector("#clear");
 var submitEl=document.querySelector("#submit");
 var startEl=document.querySelector("#start");
 var btnEl=document.querySelector("#btn");
@@ -25,8 +27,7 @@ var b1;
 var b2;
 var b3;
 var b4;
-var highScore=0;
-var initials;
+var highScore;
 var score=0;
 var qNum=0;
 var correct=0;
@@ -78,8 +79,9 @@ var quizzQuestions= [
     answer: "4. all of the above",
   }
 ];
-
-var highScores= [];
+var scoreCard=[];
+var highScores=[];
+var initials=[];
 
 // **** Functions****
 
@@ -90,7 +92,7 @@ function startTimer() {
     timeCount--;
     timeEl.textContent="Time: "+timeCount;
     if (timeCount >= 0) {
-      if (qNum > 5) {
+      if (qNum == 5) {
         clearInterval(timer);
         endGame();
       }
@@ -105,9 +107,28 @@ function startTimer() {
 function endGame(){
   qConEl.setAttribute("class","noshow");
   endGameEl.removeAttribute("class","noshow");
-  scoreEl.textContent=score;
-  localStorage.setItem("timeScore",timer);
-  localStorage.setItem("Initials", initialsInputEl);
+  // console.log("1",initialsInputEl.value);
+  // initialsInputEl.value=("");
+  // console.log("2",initialsInputEl.value);
+  scoreEl.textContent=timeCount;
+  
+}
+
+function sub(event){
+  scoreCard.push(timeCount);
+  localStorage.setItem("ScoreCard",JSON.stringify(scoreCard));
+  initialsInputEl.value=("");
+
+  initials.push(initialsInputEl.value);
+  localStorage.setItem("Initials", JSON.stringify(initials));
+  // i=initials.length
+  // s=scoreCard.length
+  
+  
+  // console.log(initials);
+  // console.log(initialsInputEl.value);
+  // console.log(initialsInputEl.value);
+  hiScr();
 }
 
 function hiScr(){
@@ -115,17 +136,20 @@ function hiScr(){
   qConEl.setAttribute("class","noshow");
   titleEl.setAttribute("class","noshow");
   hiScrEl.removeAttribute("class","noshow");
+  
   let list=document.getElementById("scoreHist");
+  highScores=scoreCard;
   highScores.forEach((item) => {
     let li=document.createElement("li");
     li.innerText= item;
     list.appendChild(li);
       }
     );
+  console.log("scoreCard");
   }  
 
 function setQuestion(){
-  if (qNum===5){qNum=0}
+  // if (qNum===5){qNum=0}
   for (var i=qNum; i < quizzQuestions.length;){
     questionEl.textContent=(quizzQuestions[i].question),
     b1El.textContent=(quizzQuestions[i].b1),      
@@ -149,16 +173,26 @@ function setQuestion(){
 
 function checkAnswer(){
   if(globalAnswer===userGuess){
-    console.log("UserGuess Yes",userGuess)
-    correct+1
+    correct++;
+    console.log("UserGuess Yes",userGuess);
+    console.log("Question number", qNum);
+    console.log("Correct",correct);
+    console.log("Wrong",wrong);
   }else{
-    console.log("UserGuess NO",userGuess)
-    wrong+1
+    wrong++;
+    console.log("UserGuess NO",userGuess);
+    console.log("Question number", qNum);
+    console.log("Correct",correct);
+    console.log("Wrong",wrong);
   }
-  setQuestion()
+  if(qNum==5){
+    endGame();
+  }
+  setQuestion();
 }
 
 function mainPage(){
+  hiScrEl.setAttribute("class","noshow");
   endGameEl.setAttribute("class", "noshow");
   titleEl.removeAttribute("class","noshow");
   initialsInputEl=("");
@@ -174,20 +208,26 @@ function startGame(event){
   qConEl.removeAttribute("class","noshow");
   startTimer();
   setQuestion();
-  checkAnswer();
-  console.log("Number of questions",quizzQuestions.length);
-  console.log("What Number is on", qNum);
-  console.log(questionEl);
-  console.log(b1El);
-  console.log(b2El);
-  console.log(b3El);
-  console.log(b4El);
+  console.log("Question number", qNum);
   console.log(globalAnswer);
-  console.log(userGuess);
   console.log(correct);
   console.log(wrong);
-  console.log(correct);
-  console.log(wrong);
+  console.log()
+  // console.log("Number of questions",quizzQuestions.length);
+  // console.log(questionEl);
+  // console.log(b1El);
+  // console.log(b2El);
+  // console.log(b3El);
+  // console.log(b4El);
+}
+
+function clear(){
+  initials.length=0;
+  localStorage.removeItem('Initials');
+  localStorage.removeItem('ScoreCard');
+  console.log(initials);
+  console.log(scoreCard);
+  console.log(initialsInputEl.value);
 }
 
 // **** Initiators ****
@@ -199,5 +239,7 @@ function startGame(event){
   b3El.addEventListener("click",log3);
   b4El.addEventListener("click",log4);
   btnEl.addEventListener("click",checkAnswer);
-  submitEl.addEventListener("click",mainPage);
+  submitEl.addEventListener("click",sub);
+  clearEl.addEventListener("click",clear);
+  goBackEl.addEventListener("click",mainPage);
 
